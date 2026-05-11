@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Allows cleartext HTTP for the local dev backend.
+  In production, replace this with HTTPS endpoints and remove the cleartext rule.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+
+    <!-- Allow HTTP for local development backends (emulator, LAN IP) -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>     <!-- Android emulator → host -->
+        <domain includeSubdomains="false">10.0.3.2</domain>     <!-- Genymotion → host -->
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="true">local</domain>
+        <!-- Add your Mac's LAN IP here if testing on a real device, e.g.: -->
+        <domain includeSubdomains="false">100.30.0.47</domain>
+    </domain-config>
+</network-security-config>
